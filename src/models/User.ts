@@ -1,13 +1,13 @@
 import { Model, DataTypes } from "sequelize";
-import { sequelize } from "../database/db";
+import sequelize from "../database/db";
 
 class User extends Model {
-    public UniqueID!: number; // Primary key
+    public id!: number; // Primary key
 }
 
 User.init(
     {
-        UniqueID: {
+        id: {
             type: DataTypes.INTEGER,
             autoIncrement: true,
             primaryKey: true,

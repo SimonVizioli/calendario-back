@@ -1,8 +1,8 @@
 import { Model, DataTypes } from "sequelize";
-import { sequelize } from "../database/db";
+import sequelize from "../database/db";
 
 class Schedule extends Model {
-    public UniqueID!: number;
+    public id!: number;
     public startDate!: Date;
     public endDate!: Date;
     public description!: string;
@@ -15,7 +15,7 @@ class Schedule extends Model {
 
 Schedule.init(
     {
-        UniqueID: {
+        id: {
             type: DataTypes.INTEGER,
             autoIncrement: true,
             primaryKey: true,

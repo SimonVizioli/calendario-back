@@ -1,8 +1,8 @@
 import { Model, DataTypes } from "sequelize";
-import { sequelize } from "../database/db";
+import sequelize from "../database/db";
 
 class Event extends Model {
-    public UniqueID!: number;
+    public id!: number;
     public name!: string;
     public code!: string;
     public description!: string;
@@ -14,7 +14,7 @@ class Event extends Model {
 
 Event.init(
     {
-        UniqueID: {
+        id: {
             type: DataTypes.INTEGER,
             autoIncrement: true,
             primaryKey: true,
@@ -35,6 +35,7 @@ Event.init(
     {
         sequelize,
         tableName: "events",
+        timestamps: true,
     }
 );
 
