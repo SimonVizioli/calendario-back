@@ -1,0 +1,147 @@
+{
+	"info": {
+		"_postman_id": "27455c38-8a51-4518-b7cf-71137a2b9012",
+		"name": "calendario",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "38175092"
+	},
+	"item": [
+		{
+			"name": "Event",
+			"item": [
+				{
+					"name": "getEventById",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:{{Port}}/api/events/:id",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "{{Port}}",
+							"path": [
+								"api",
+								"events",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "7fa34f77-1a67-456c-8d9e-b8c6b8e7e123"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getAllEvents",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:{{Port}}/api/events/"
+					},
+					"response": []
+				},
+				{
+					"name": "createEvent",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"id\": \"9fa76a44-1a67-456c-9d9e-c9c7b8f99f66\",\n    \"name\": \"AI Conference\",\n    \"code\": \"AI2024\",\n    \"description\": \"Conference about artificial intelligence advancements\"\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:{{Port}}/api/events/"
+					},
+					"response": []
+				},
+				{
+					"name": "updateEvent",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"id\": \"7fa34f77-1a67-456c-8d9e-b8c6b8e7e123\",\n    \"name\": \"Tech Conference Updated\",\n    \"code\": \"TECH2024UPD\",\n    \"description\": \"Annual technology conference updated\"\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:{{Port}}/api/events/:id",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "{{Port}}",
+							"path": [
+								"api",
+								"events",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "7fa34f77-1a67-456c-8d9e-b8c6b8e7e123"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "deleteEvent",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:{{Port}}/api/events/:id",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "{{Port}}",
+							"path": [
+								"api",
+								"events",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "8cb56a33-8c76-4b89-a347-d9a6b6c8f901"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "countEvents",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"variable": [
+		{
+			"key": "Port",
+			"value": "3000",
+			"type": "default"
+		}
+	]
+}
