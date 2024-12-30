@@ -2,7 +2,7 @@ import { Model, DataTypes } from "sequelize";
 import sequelize from "../database/db";
 
 class Schedule extends Model {
-    public id!: number;
+    public id!: string;
     public startDate!: Date;
     public endDate!: Date;
     public description!: string;
@@ -16,8 +16,8 @@ class Schedule extends Model {
 Schedule.init(
     {
         id: {
-            type: DataTypes.INTEGER,
-            autoIncrement: true,
+            type: DataTypes.UUID, // Define el campo como UUID
+            defaultValue: DataTypes.UUIDV4, // Genera automáticamente un UUID v4
             primaryKey: true,
         },
         startDate: {

@@ -5,10 +5,10 @@ import Schedule from "./Schedule";
 import User from "./User";
 
 class EventSchedule extends Model {
-    public id!: number;
-    public schedule_id!: number;
-    public event_id!: number;
-    public user_id!: number;
+    public id!: string;
+    public schedule_id!: string;
+    public event_id!: string;
+    public user_id!: string;
 
     // timestamps!
     public readonly createdAt!: Date;
@@ -36,20 +36,20 @@ class EventSchedule extends Model {
 EventSchedule.init(
     {
         id: {
-            type: DataTypes.INTEGER,
-            autoIncrement: true,
+            type: DataTypes.UUID, // Define el campo como UUID
+            defaultValue: DataTypes.UUIDV4, // Genera automáticamente un UUID v4
             primaryKey: true,
         },
         schedule_id: {
-            type: DataTypes.INTEGER,
+            type: DataTypes.UUID,
             allowNull: false,
         },
         event_id: {
-            type: DataTypes.INTEGER,
+            type: DataTypes.UUID,
             allowNull: false,
         },
         user_id: {
-            type: DataTypes.INTEGER,
+            type: DataTypes.UUID,
             allowNull: false,
         },
     },

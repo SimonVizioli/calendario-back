@@ -2,7 +2,7 @@ import { Model, DataTypes } from "sequelize";
 import sequelize from "../database/db";
 
 class Event extends Model {
-    public id!: number;
+    public id!: string;
     public name!: string;
     public code!: string;
     public description!: string;
@@ -15,8 +15,8 @@ class Event extends Model {
 Event.init(
     {
         id: {
-            type: DataTypes.INTEGER,
-            autoIncrement: true,
+            type: DataTypes.UUID, // Define el campo como UUID
+            defaultValue: DataTypes.UUIDV4, // Genera automáticamente un UUID v4
             primaryKey: true,
         },
         name: {
