@@ -30,7 +30,8 @@ ScheduleType.init(
     },
     {
         sequelize,
-        tableName: "ScheduleTypes",
+        modelName: "ScheduleTypes",
+        timestamps: true,
     }
 );
 

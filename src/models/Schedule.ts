@@ -39,7 +39,8 @@ Schedule.init(
     },
     {
         sequelize,
-        tableName: "schedules",
+        modelName: "Schedules",
+        timestamps: true,
     }
 );
 

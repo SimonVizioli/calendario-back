@@ -55,7 +55,8 @@ EventSchedule.init(
     },
     {
         sequelize,
-        tableName: "EventSchedule",
+        modelName: "EventSchedule",
+        timestamps: true,
     }
 );
 

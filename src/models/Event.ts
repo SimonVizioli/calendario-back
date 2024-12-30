@@ -34,7 +34,7 @@ Event.init(
     },
     {
         sequelize,
-        tableName: "events",
+        modelName: "Events",
         timestamps: true,
     }
 );
