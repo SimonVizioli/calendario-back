@@ -19,13 +19,26 @@ export const getEventScheduleById = async (req: Request, res: Response) => {
 
 export const getAllEventSchedules = async (req: Request, res: Response) => {
     try {
-        const eventSchedules = await EventSchedule.findAll();
-        res.status(200).json(eventSchedules);
+        const { eventId } = req.query;
+
+        // Si se pasa un eventId, filtra los resultados
+        const filter = eventId ? { where: { event_id: eventId } } : {};
+
+        const eventSchedules = await EventSchedule.findAll(filter);
+
+        return res.status(200).json(eventSchedules);
     } catch (error) {
-        res.status(500).json({
-            message: "Error retrieving eventSchedules",
-            error,
-        });
+        if (error instanceof Error) {
+            return res.status(500).json({
+                message: "Error deleting event",
+                error: error.message,
+            });
+        } else {
+            return res.status(500).json({
+                message: "Unknown error occurred",
+                error: String(error),
+            });
+        }
     }
 };
 

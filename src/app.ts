@@ -8,6 +8,7 @@ import UserScheduleRoutes from "./routes/UserScheduleRoutes";
 import sequelize from "./database/db";
 import dotenv from "dotenv";
 import { initModels } from "./models/index";
+import loggerMiddleware from "./middlewares/loggerMiddleware";
 
 dotenv.config(); // Carga las variables de entorno
 
@@ -17,6 +18,7 @@ const PORT = process.env.PORT || 3000;
 // Middleware
 app.use(express.json({ limit: "100mb" }));
 app.use(express.urlencoded({ extended: true }));
+app.use(loggerMiddleware);
 
 // Routes
 app.use("/api/events", EventRoutes);
