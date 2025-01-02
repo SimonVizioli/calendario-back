@@ -11,7 +11,7 @@ export const getEventById = async (req: Request, res: Response) => {
             return res.status(400).json({ message: "Event ID is required" });
         }
 
-        const event = await Event.findByPk(req.params.id);
+        const event = await Event.findByPk(id);
         if (event) {
             res.status(200).json(event);
         } else {
@@ -119,7 +119,7 @@ export const countEvents = async (req: Request, res: Response) => {
         const where = filter ? JSON.parse(filter as string) : undefined;
 
         // Realizar el conteo de eventos
-        const count = await Event.count({ where });
+        const count = await Event.count();
 
         return res.status(200).json({ count });
     } catch (error) {

@@ -9,10 +9,10 @@ export const getScheduleById = async (req: Request, res: Response) => {
 
         // Validar entrada
         if (!id) {
-            return res.status(400).json({ message: "Event ID is required" });
+            return res.status(400).json({ message: "User ID is required" });
         }
 
-        const schedule = await Schedule.findByPk(req.params.id);
+        const schedule = await Schedule.findByPk(id);
         if (schedule) {
             res.status(200).json(schedule);
         } else {
@@ -47,7 +47,7 @@ export const updateSchedule = async (req: Request, res: Response) => {
 
         // Validar entrada
         if (!id) {
-            return res.status(400).json({ message: "Event ID is required" });
+            return res.status(400).json({ message: "Schedule ID is required" });
         }
 
         // Excluir campos no permitidos para actualización
@@ -63,9 +63,9 @@ export const updateSchedule = async (req: Request, res: Response) => {
             res.status(404).json({ message: "Schedule not found" });
         }
     } catch (error: any) {
-        console.error("Error updating event:", error);
+        console.error("Error updating schedule:", error);
         return res.status(500).json({
-            message: "Error updating event",
+            message: "Error updating schedule",
             error: error.message || error,
         });
     }
@@ -77,7 +77,7 @@ export const deleteSchedule = async (req: Request, res: Response) => {
 
         // Validar entrada
         if (!id) {
-            return res.status(400).json({ message: "Event ID is required" });
+            return res.status(400).json({ message: "Schedule ID is required" });
         }
 
         // Eliminar registros relacionados en EventSchedule
@@ -107,7 +107,7 @@ export const countSchedules = async (req: Request, res: Response) => {
     } catch (error) {
         if (error instanceof Error) {
             return res.status(500).json({
-                message: "Error deleting event",
+                message: "Error deleting schedule",
                 error: error.message,
             });
         } else {
