@@ -4,6 +4,13 @@ import EventSchedule from "../models/EventSchedule";
 
 export const getEventById = async (req: Request, res: Response) => {
     try {
+        const { id } = req.params;
+
+        // Validar entrada
+        if (!id) {
+            return res.status(400).json({ message: "Event ID is required" });
+        }
+
         const event = await Event.findByPk(req.params.id);
         if (event) {
             res.status(200).json(event);
