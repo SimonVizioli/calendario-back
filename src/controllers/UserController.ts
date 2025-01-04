@@ -1,9 +1,18 @@
 import { Request, Response } from "express";
 import User from "../models/User";
+import UserSchedule from "../models/UserSchedule";
+import EventSchedule from "../models/EventSchedule";
 
 export const getUserById = async (req: Request, res: Response) => {
     try {
-        const user = await User.findByPk(req.params.id);
+        const { id } = req.params;
+
+        // Validar entrada
+        if (!id) {
+            return res.status(400).json({ message: "User ID is required" });
+        }
+
+        const user = await User.findByPk(id);
         if (user) {
             res.status(200).json(user);
         } else {
@@ -34,8 +43,18 @@ export const createUser = async (req: Request, res: Response) => {
 
 export const updateUser = async (req: Request, res: Response) => {
     try {
-        const [updated] = await User.update(req.body, {
-            where: { UniqueID: req.params.id },
+        const { id } = req.params;
+
+        // Validar entrada
+        if (!id) {
+            return res.status(400).json({ message: "User ID is required" });
+        }
+
+        // Excluir campos no permitidos para actualización
+        const { id: bodyId, ...updateFields } = req.body;
+
+        const [updated] = await User.update(updateFields, {
+            where: { id },
         });
         if (updated) {
             const updatedUser = await User.findByPk(req.params.id);
@@ -43,15 +62,32 @@ export const updateUser = async (req: Request, res: Response) => {
         } else {
             res.status(404).json({ message: "User not found" });
         }
-    } catch (error) {
-        res.status(500).json({ message: "Error updating user", error });
+    } catch (error: any) {
+        console.error("Error updating user:", error);
+        return res.status(500).json({
+            message: "Error updating user",
+            error: error.message || error,
+        });
     }
 };
 
 export const deleteUser = async (req: Request, res: Response) => {
     try {
+        const { id } = req.params;
+
+        // Validar entrada
+        if (!id) {
+            return res.status(400).json({ message: "User ID is required" });
+        }
+
+        // Eliminar registros relacionados en UserSchedule
+        await UserSchedule.destroy({ where: { user_id: id } });
+
+        await EventSchedule.destroy({ where: { user_id: id } });
+
+        // Eliminar el usuario
         const deleted = await User.destroy({
-            where: { UniqueID: req.params.id },
+            where: { id },
         });
         if (deleted) {
             res.status(204).json({ message: "User deleted" });
@@ -59,7 +95,17 @@ export const deleteUser = async (req: Request, res: Response) => {
             res.status(404).json({ message: "User not found" });
         }
     } catch (error) {
-        res.status(500).json({ message: "Error deleting user", error });
+        if (error instanceof Error) {
+            return res.status(500).json({
+                message: "Error deleting user",
+                error: error.message,
+            });
+        } else {
+            return res.status(500).json({
+                message: "Unknown error occurred",
+                error: String(error),
+            });
+        }
     }
 };
 

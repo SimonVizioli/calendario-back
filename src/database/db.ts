@@ -1,9 +1,17 @@
 import { Sequelize } from "sequelize";
+import dotenv from "dotenv";
 
-const sequelize = new Sequelize("database_name", "username", "password", {
-    host: "localhost",
-    dialect: "mysql", // or 'postgres', 'sqlite', 'mariadb', 'mssql'
-    logging: false, // Set to true if you want to see SQL queries in the console
-});
+dotenv.config();
 
-export { sequelize };
+const sequelize = new Sequelize(
+    process.env.DB_NAME as string,
+    process.env.DB_USER as string,
+    process.env.DB_PASSWORD as string,
+    {
+        host: process.env.DB_HOST,
+        dialect: process.env.DB_DIALECT as any,
+        logging: false,
+    }
+);
+
+export default sequelize;

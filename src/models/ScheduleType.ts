@@ -1,8 +1,8 @@
 import { Model, DataTypes } from "sequelize";
-import { sequelize } from "../database/db";
+import sequelize from "../database/db";
 
 class ScheduleType extends Model {
-    public UniqueID!: number;
+    public id!: string;
     public name!: string;
     public code!: string;
     public description!: string;
@@ -10,9 +10,9 @@ class ScheduleType extends Model {
 
 ScheduleType.init(
     {
-        UniqueID: {
-            type: DataTypes.INTEGER,
-            autoIncrement: true,
+        id: {
+            type: DataTypes.UUID, // Define el campo como UUID
+            defaultValue: DataTypes.UUIDV4, // Genera automáticamente un UUID v4
             primaryKey: true,
         },
         name: {
@@ -30,7 +30,8 @@ ScheduleType.init(
     },
     {
         sequelize,
-        tableName: "ScheduleTypes",
+        modelName: "ScheduleType",
+        timestamps: true,
     }
 );
 

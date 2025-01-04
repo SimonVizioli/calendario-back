@@ -10,8 +10,8 @@ import { Router } from "express";
 
 const router = Router();
 
-router.get("/", getUserById);
-router.get("/:id", getAllUsers);
+router.get("/:id", getUserById);
+router.get("/", getAllUsers);
 router.post("/", createUser);
 router.put("/:id", updateUser);
 router.delete("/:id", deleteUser);
