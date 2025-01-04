@@ -2,7 +2,7 @@
 	"info": {
 		"_postman_id": "27455c38-8a51-4518-b7cf-71137a2b9012",
 		"name": "calendario",
-		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "38175092"
 	},
 	"item": [
@@ -41,7 +41,19 @@
 					"request": {
 						"method": "GET",
 						"header": [],
-						"url": "http://localhost:{{Port}}/api/events/"
+						"url": {
+							"raw": "http://localhost:{{Port}}/api/events/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "{{Port}}",
+							"path": [
+								"api",
+								"events",
+								""
+							]
+						}
 					},
 					"response": []
 				},
@@ -59,7 +71,19 @@
 								}
 							}
 						},
-						"url": "http://localhost:{{Port}}/api/events/"
+						"url": {
+							"raw": "http://localhost:{{Port}}/api/events/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "{{Port}}",
+							"path": [
+								"api",
+								"events",
+								""
+							]
+						}
 					},
 					"response": []
 				},
@@ -130,11 +154,865 @@
 					"name": "countEvents",
 					"request": {
 						"method": "GET",
-						"header": []
+						"header": [],
+						"url": {
+							"raw": "http://localhost:{{Port}}/api/events/count",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "{{Port}}",
+							"path": [
+								"api",
+								"events",
+								"count"
+							]
+						}
 					},
 					"response": []
 				}
-			]
+			],
+			"description": "**Descripción:**  \nLa entidad `Event` representa un evento registrado en el sistema, como conferencias, capacitaciones o actividades específicas.\n\n**Campos principales:**\n\n- `id`: Identificador único del evento (UUID).\n    \n- `name`: Nombre del evento.\n    \n- `code`: Código único del evento.\n    \n- `description`: Descripción del evento."
+		},
+		{
+			"name": "Schedule",
+			"item": [
+				{
+					"name": "getScheduleById",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:{{Port}}/api/schedules/:id",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "{{Port}}",
+							"path": [
+								"api",
+								"schedules",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "df51b8f4-5b8c-4b9a-b547-e20b6c8f88c2"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getAllSchedules",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:{{Port}}/api/schedules/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "{{Port}}",
+							"path": [
+								"api",
+								"schedules",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "createSchedule",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"startDate\": \"2024-02-01T10:00:00\",\n    \"endDate\": \"2024-02-01T12:00:00\",\n    \"description\": \"Project kickoff meeting\",\n    \"deleted\": false,\n    \"scheduleType_id\":\"c8d49a33-8c67-4d89-d123-e2a6c8d77a11\"\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:{{Port}}/api/schedules/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "{{Port}}",
+							"path": [
+								"api",
+								"schedules",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "updateSchedule",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"id\":\"ae38f8c4-1e8f-4b9c-b846-f30b6b8d99f3\",\n    \"startDate\": \"2024-02-05T10:00:00\",\n    \"endDate\": \"2024-02-05T12:00:00\",\n    \"description\": \"Updated meeting description\",\n    \"deleted\": false,\n    \"scheduleType_id\":\"c8d49a33-8c67-4d89-d123-e2a6c8d77a11\"\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:{{Port}}/api/schedules/:id",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "{{Port}}",
+							"path": [
+								"api",
+								"schedules",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "ae38f8c4-1e8f-4b9c-b846-f30b6b8d99f3"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "deleteSchedule",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:{{Port}}/api/schedules/:id",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "{{Port}}",
+							"path": [
+								"api",
+								"schedules",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "ae38f8c4-1e8f-4b9c-b846-f30b6b8d99f3"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "countSchedules",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:{{Port}}/api/schedules/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "{{Port}}",
+							"path": [
+								"api",
+								"schedules",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"description": "**Descripción:**  \nLa entidad `Schedule` representa un evento o tarea programada dentro del sistema, con fechas de inicio y fin. También incluye un tipo de programación asociado.\n\n**Campos principales:**\n\n- `id`: Identificador único del schedule (UUID).\n    \n- `startDate`: Fecha y hora de inicio.\n    \n- `endDate`: Fecha y hora de finalización.\n    \n- `description`: Descripción opcional del schedule.\n    \n- `deleted`: Indicador de si el schedule ha sido eliminado.\n    \n- `scheduleType_id`: Identificador del tipo de schedule al que pertenece."
+		},
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "getUsersById",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:{{Port}}/api/users/:id",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "{{Port}}",
+							"path": [
+								"api",
+								"users",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "1ae38f8c-1e8f-4b9c-b846-f30b6b8d99f3"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getAllUsers",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:{{Port}}/api/users/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "{{Port}}",
+							"path": [
+								"api",
+								"users",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "createUser",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \n    \"firstName\": \"Juan\",\n    \"lastName\":\"Perez\",\n    \"username\": \"juanperez\",\n    \"password\":\"12345\"\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:{{Port}}/api/users/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "{{Port}}",
+							"path": [
+								"api",
+								"users",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "updateUser",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \n    \"firstName\": \"Juan\",\n    \"lastName\":\"Perez\",\n    \"username\": \"juanperez\",\n    \"password\":\"1234567\"\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:{{Port}}/api/users/:id",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "{{Port}}",
+							"path": [
+								"api",
+								"users",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "3d9ff6bd-984c-4989-b924-d91ea57a979b"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "deleteUser",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:{{Port}}/api/users/:id",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "{{Port}}",
+							"path": [
+								"api",
+								"users",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "3d9ff6bd-984c-4989-b924-d91ea57a979b"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "countUsers",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:{{Port}}/api/users/count",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "{{Port}}",
+							"path": [
+								"api",
+								"users",
+								"count"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"description": "**Descripción:**  \nLa entidad `User` representa a los usuarios del sistema. Cada usuario tiene información básica como su nombre, apellido y credenciales de inicio de sesión.\n\n**Campos principales:**\n\n- `id`: Identificador único del usuario (UUID).\n    \n- `firstName`: Nombre del usuario.\n    \n- `lastName`: Apellido del usuario.\n    \n- `username`: Nombre de usuario único.\n    \n- `password`: Contraseña del usuario, almacenada de forma segura."
+		},
+		{
+			"name": "ScheduleType",
+			"item": [
+				{
+					"name": "getScheduleTypeById",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:{{Port}}/api/schedule-types/:id",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "{{Port}}",
+							"path": [
+								"api",
+								"schedule-types",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "c8d49a33-8c67-4d89-d123-e2a6c8d77a11"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getAllScheduleTypes",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:{{Port}}/api/schedule-types/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "{{Port}}",
+							"path": [
+								"api",
+								"schedule-types",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "createScheduleTypes",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Vacation\",\n    \"code\": \"1\",\n    \"description\": \"Vactions\"\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:{{Port}}/api/schedule-types/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "{{Port}}",
+							"path": [
+								"api",
+								"schedule-types",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "updateScheduleType",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"id\": \"403bb060-bf78-4155-b2e2-b837373a13c9\",\n    \"name\": \"Vacation\",\n    \"code\": \"1\",\n    \"description\": \"Vacti time\",\n    \"updatedAt\": \"2025-01-04T16:43:25.868Z\",\n    \"createdAt\": \"2025-01-04T16:43:25.868Z\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:{{Port}}/api/schedule-types/:id",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "{{Port}}",
+							"path": [
+								"api",
+								"schedule-types",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "403bb060-bf78-4155-b2e2-b837373a13c9"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "deleteScheduleType",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:{{Port}}/api/schedule-types/:id",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "{{Port}}",
+							"path": [
+								"api",
+								"schedule-types",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "403bb060-bf78-4155-b2e2-b837373a13c9"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "countScheduleType",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:{{Port}}/api/schedule-types/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "{{Port}}",
+							"path": [
+								"api",
+								"schedule-types",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"description": "**Descripción:**  \nLa entidad `ScheduleType` define los tipos de programación disponibles, como reuniones, talleres o entrenamientos. Se utiliza para categorizar los schedules.\n\n**Campos principales:**\n\n- `id`: Identificador único del tipo de schedule (UUID).\n    \n- `name`: Nombre del tipo (por ejemplo, \"Meeting\", \"Workshop\").\n    \n- `code`: Código único para identificar el tipo.\n    \n- `description`: Descripción opcional del tipo."
+		},
+		{
+			"name": "EventSchedule",
+			"item": [
+				{
+					"name": "getEventScheduleById",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:{{Port}}/api/event-schedules/:id",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "{{Port}}",
+							"path": [
+								"api",
+								"event-schedules",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "1df31e44-1e89-4b87-c236-f4a6c8e6f333"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getAllEventSchedules",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:{{Port}}/api/event-schedules/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "{{Port}}",
+							"path": [
+								"api",
+								"event-schedules",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "createEventSchedule",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "  {\n        \"schedule_id\": \"cc31f8e4-2e8c-4b9b-b146-a10b6b7d88b1\",\n        \"event_id\": \"7fa34f77-1a67-456c-8d9e-b8c6b8e7e123\",\n        \"user_id\": \"5ee55e55-4b9c-4b9c-b846-f30b6b7e88e2\"\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:{{Port}}/api/event-schedules/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "{{Port}}",
+							"path": [
+								"api",
+								"event-schedules",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "updateEventSchedule",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "  {\n         \"id\": \"4f1e3f4a-c458-4482-bf7e-932ee7d7b216\",\n        \"schedule_id\": \"cc31f8e4-2e8c-4b9b-b146-a10b6b7d88b1\",\n        \"event_id\": \"7fa34f77-1a67-456c-8d9e-b8c6b8e7e123\",\n        \"user_id\": \"3cc31f8e-2e8c-4b9b-b146-a10b6b7d88b1\"\n    }\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:{{Port}}/api/event-schedules/:id",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "{{Port}}",
+							"path": [
+								"api",
+								"event-schedules",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "4f1e3f4a-c458-4482-bf7e-932ee7d7b216"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "deleteEventSchedule",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:{{Port}}/api/event-schedules/:id",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "{{Port}}",
+							"path": [
+								"api",
+								"event-schedules",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "4f1e3f4a-c458-4482-bf7e-932ee7d7b216"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "countEventSchedules",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:{{Port}}/api/event-schedules/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "{{Port}}",
+							"path": [
+								"api",
+								"event-schedules",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"description": "**Descripción:**  \nLa entidad `EventSchedule` relaciona eventos con horarios específicos. Permite organizar un evento dentro de un schedule.\n\n**Campos principales:**\n\n- `id`: Identificador único de la relación (UUID).\n    \n- `event_id`: Identificador del evento asociado.\n    \n- `schedule_id`: Identificador del schedule asociado.\n    \n- `user_id`: Identificador del usuario que administra o participa en el evento."
+		},
+		{
+			"name": "UserSchedule",
+			"item": [
+				{
+					"name": "getUserScheduleById",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:{{Port}}/api/user-schedules/:id",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "{{Port}}",
+							"path": [
+								"api",
+								"user-schedules",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "4cf69f66-5f89-4b87-b456-f7a6c8e9f666"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getAllUserSchedules",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:{{Port}}/api/user-schedules/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "{{Port}}",
+							"path": [
+								"api",
+								"user-schedules",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "createUserSchedule",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"schedule_id\": \"df51b8f4-5b8c-4b9a-b547-e20b6c8f88c2\",\n    \"user_id\": \"1ae38f8c-1e8f-4b9c-b846-f30b6b8d99f3\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:{{Port}}/api/user-schedules/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "{{Port}}",
+							"path": [
+								"api",
+								"user-schedules",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "updateUserSchedule",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"id\": \"e8df53f6-e77c-4d69-a15b-425edaf0116b\",\n    \"schedule_id\": \"cc31f8e4-2e8c-4b9b-b146-a10b6b7d88b1\",\n    \"user_id\": \"1ae38f8c-1e8f-4b9c-b846-f30b6b8d99f3\",\n    \"updatedAt\": \"2025-01-04T17:36:17.025Z\",\n    \"createdAt\": \"2025-01-04T17:36:17.025Z\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:{{Port}}/api/user-schedules/:id",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "{{Port}}",
+							"path": [
+								"api",
+								"user-schedules",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "e8df53f6-e77c-4d69-a15b-425edaf0116b"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "deleteUserSchedule",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:{{Port}}/api/user-schedules/:id",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "{{Port}}",
+							"path": [
+								"api",
+								"user-schedules",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "e8df53f6-e77c-4d69-a15b-425edaf0116b"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "countUserSchedules",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:{{Port}}/api/user-schedules/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "{{Port}}",
+							"path": [
+								"api",
+								"user-schedules",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"description": "**Descripción:**  \nLa entidad `UserSchedule` relaciona a los usuarios con los schedules en los que participan. Esto permite rastrear qué usuarios están asignados a qué eventos o tareas programadas.\n\n**Campos principales:**\n\n- `id`: Identificador único de la relación (UUID).\n    \n- `user_id`: Identificador del usuario asociado.\n    \n- `schedule_id`: Identificador del schedule asociado."
 		}
 	],
 	"variable": [

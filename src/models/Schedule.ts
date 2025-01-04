@@ -1,5 +1,6 @@
 import { Model, DataTypes } from "sequelize";
 import sequelize from "../database/db";
+import ScheduleType from "./ScheduleType";
 
 class Schedule extends Model {
     public id!: string;
@@ -7,6 +8,13 @@ class Schedule extends Model {
     public endDate!: Date;
     public description!: string;
     public deleted!: boolean;
+
+    public static associate() {
+        Schedule.belongsTo(ScheduleType, {
+            foreignKey: "scheduleType_id",
+            as: "scheduleType", // Alias para acceder al evento relacionado
+        });
+    }
 
     // timestamps!
     public readonly createdAt!: Date;
@@ -19,6 +27,11 @@ Schedule.init(
             type: DataTypes.UUID, // Define el campo como UUID
             defaultValue: DataTypes.UUIDV4, // Genera automáticamente un UUID v4
             primaryKey: true,
+        },
+        scheduleType_id: {
+            type: DataTypes.UUID,
+            defaultValue: DataTypes.UUIDV4,
+            allowNull: false,
         },
         startDate: {
             type: DataTypes.DATE,
@@ -39,7 +52,7 @@ Schedule.init(
     },
     {
         sequelize,
-        modelName: "Schedules",
+        modelName: "Schedule",
         timestamps: true,
     }
 );

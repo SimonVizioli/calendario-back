@@ -44,7 +44,7 @@ UserSchedule.init(
     },
     {
         sequelize,
-        modelName: "UserSchedules",
+        modelName: "UserSchedule",
         timestamps: true,
     }
 );

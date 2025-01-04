@@ -37,7 +37,7 @@ const isDevelopment = process.env.NODE_ENV === "staging";
 
 if (isDevelopment) {
     sequelize
-        .sync({ force: true }) // Sincroniza los modelos con la base de datos en desarrollo
+        .sync({ alter: true }) // Sincroniza los modelos con la base de datos en desarrollo
         .then(() => {
             console.log(
                 "Conexión a la base de datos establecida (desarrollo)."

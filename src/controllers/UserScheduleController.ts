@@ -3,7 +3,16 @@ import UserSchedule from "../models/UserSchedule";
 
 export const getUserScheduleById = async (req: Request, res: Response) => {
     try {
-        const userSchedule = await UserSchedule.findByPk(req.params.id);
+        const { id } = req.params;
+
+        // Validar entrada
+        if (!id) {
+            return res
+                .status(400)
+                .json({ message: "UserSchedule ID is required" });
+        }
+
+        const userSchedule = await UserSchedule.findByPk(id);
         if (userSchedule) {
             res.status(200).json(userSchedule);
         } else {
@@ -40,13 +49,21 @@ export const createUserSchedule = async (req: Request, res: Response) => {
 
 export const updateUserSchedule = async (req: Request, res: Response) => {
     try {
-        const [updated] = await UserSchedule.update(req.body, {
-            where: { UniqueID: req.params.id },
+        const { id } = req.params;
+
+        // Validar entrada
+        if (!id) {
+            return res.status(400).json({ message: "Event ID is required" });
+        }
+
+        // Excluir campos no permitidos para actualización
+        const { id: bodyId, ...updateFields } = req.body;
+
+        const [updated] = await UserSchedule.update(updateFields, {
+            where: { id },
         });
         if (updated) {
-            const updatedUserSchedule = await UserSchedule.findByPk(
-                req.params.id
-            );
+            const updatedUserSchedule = await UserSchedule.findByPk(id);
             res.status(200).json(updatedUserSchedule);
         } else {
             res.status(404).json({ message: "UserSchedule not found" });
@@ -58,8 +75,15 @@ export const updateUserSchedule = async (req: Request, res: Response) => {
 
 export const deleteUserSchedule = async (req: Request, res: Response) => {
     try {
+        const { id } = req.params;
+
+        // Validar entrada
+        if (!id) {
+            return res.status(400).json({ message: "Event ID is required" });
+        }
+
         const deleted = await UserSchedule.destroy({
-            where: { UniqueID: req.params.id },
+            where: { id },
         });
         if (deleted) {
             res.status(204).json({ message: "UserSchedule deleted" });

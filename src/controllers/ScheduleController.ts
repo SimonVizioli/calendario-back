@@ -2,6 +2,7 @@ import { Request, Response } from "express";
 import Schedule from "../models/Schedule";
 import EventSchedule from "../models/EventSchedule";
 import UserSchedule from "../models/UserSchedule";
+import ScheduleType from "../models/ScheduleType";
 
 export const getScheduleById = async (req: Request, res: Response) => {
     try {
@@ -26,6 +27,17 @@ export const getScheduleById = async (req: Request, res: Response) => {
 export const getAllSchedules = async (req: Request, res: Response) => {
     try {
         const schedules = await Schedule.findAll();
+        res.status(200).json(schedules);
+    } catch (error) {
+        res.status(500).json({ message: "Error retrieving schedules", error });
+    }
+};
+
+export const getAllSchedulesDTO = async (req: Request, res: Response) => {
+    try {
+        const schedules = await Schedule.findAll({
+            include: [{ model: ScheduleType, as: "scheduleType" }],
+        });
         res.status(200).json(schedules);
     } catch (error) {
         res.status(500).json({ message: "Error retrieving schedules", error });
