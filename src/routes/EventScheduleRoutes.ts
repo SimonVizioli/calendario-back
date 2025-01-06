@@ -7,8 +7,10 @@ import {
     updateEventSchedule,
 } from "../controllers/EventScheduleController";
 import { Router } from "express";
+import { authenticateToken } from "../middlewares/authMiddleware";
 
 const router = Router();
+router.use(authenticateToken);
 
 router.get("/:id", getEventScheduleById);
 router.get("/", getAllEventSchedules);

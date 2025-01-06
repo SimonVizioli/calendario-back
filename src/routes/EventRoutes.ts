@@ -7,8 +7,10 @@ import {
     getEventById,
     updateEvent,
 } from "../controllers/EventController";
+import { authenticateToken } from "../middlewares/authMiddleware";
 
 const router = Router();
+router.use(authenticateToken);
 
 router.get("/:id", getEventById);
 router.get("/", getAllEvents);

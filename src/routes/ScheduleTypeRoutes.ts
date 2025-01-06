@@ -7,8 +7,10 @@ import {
     updateScheduleType,
 } from "../controllers/ScheduleTypeController";
 import { Router } from "express";
+import { authenticateToken } from "../middlewares/authMiddleware";
 
 const router = Router();
+router.use(authenticateToken);
 
 router.get("/:id", getScheduleTypeById);
 router.get("/", getAllScheduleTypes);
