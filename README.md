@@ -110,6 +110,8 @@ The server will start and listen for requests.
 -   `PUT /users/:id`: Update a user by ID
 -   `DELETE /users/:id`: Delete a user by ID
 -   `GET /users/count`: Get the total number of users
+-   `POST /users/register`: Registers a new user with a hashed password
+-   `POST /users/login`: Returns an accessToken 
 
 ### Schedules
 
