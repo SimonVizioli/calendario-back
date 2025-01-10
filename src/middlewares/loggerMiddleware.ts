@@ -1,13 +1,5 @@
 import morgan from "morgan";
-
-// Emojis para los diferentes rangos de status HTTP
-const getStatusEmoji = (status: number) => {
-    if (status >= 500) return "🔥"; // Error del servidor
-    if (status >= 400) return "⚠️"; // Error del cliente
-    if (status >= 300) return "🔄"; // Redirección
-    if (status >= 200) return "✅"; // Éxito
-    return "ℹ️"; // Informativo
-};
+import { getStatusEmoji } from "../utils/const";
 
 // Middleware de logs
 const loggerMiddleware = morgan((tokens, req, res) => {

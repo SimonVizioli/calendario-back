@@ -13,64 +13,6 @@ if (!secretKey) {
     throw new Error("JWT_SECRET is not defined in the environment variables");
 }
 
-export const loginUser = async (req: Request, res: Response) => {
-    const { username, password } = req.body;
-
-    try {
-        // Busca al usuario
-        const user = await User.findOne({ where: { username } });
-        if (!user) {
-            return res.status(404).json({ message: "User not found" });
-        }
-
-        // Verifica la contraseña
-        const validPassword = await bcrypt.compare(password, user.password);
-        if (!validPassword) {
-            return res.status(401).json({ message: "Invalid credentials" });
-        }
-
-        // Genera el token
-        const token = jwt.sign(
-            { id: user.id, username: user.username },
-            process.env.JWT_SECRET as string,
-            { expiresIn: "1h" }
-        );
-
-        res.status(200).json({ token });
-    } catch (error) {
-        res.status(500).json({ message: "Error logging in", error });
-    }
-};
-
-export const registerUser = async (req: Request, res: Response) => {
-    const { username, password, firstName, lastName } = req.body;
-
-    try {
-        const existingUser = await User.findOne({ where: { username } });
-        if (existingUser) {
-            return res.status(400).json({ message: "Username alredy taken" });
-        }
-
-        const saltRounds = 10;
-        const hashedPassword = await bcrypt.hash(password, saltRounds);
-
-        // Crea el usuario
-        await User.create({
-            username,
-            password: hashedPassword,
-            firstName,
-            lastName,
-        });
-
-        res.status(201).json({
-            message: "User registered successfully",
-            user: { username },
-        });
-    } catch (error) {
-        res.status(500).json({ message: "Error registering user", error });
-    }
-};
-
 export const getUserById = async (req: Request, res: Response) => {
     try {
         const { id } = req.params;
@@ -183,5 +125,63 @@ export const countUsers = async (req: Request, res: Response) => {
         res.status(200).json({ count });
     } catch (error) {
         res.status(500).json({ message: "Error counting users", error });
+    }
+};
+
+export const registerUser = async (req: Request, res: Response) => {
+    const { username, password, firstName, lastName } = req.body;
+
+    try {
+        const existingUser = await User.findOne({ where: { username } });
+        if (existingUser) {
+            return res.status(400).json({ message: "Username alredy taken" });
+        }
+
+        const saltRounds = 10;
+        const hashedPassword = await bcrypt.hash(password, saltRounds);
+
+        // Crea el usuario
+        await User.create({
+            username,
+            password: hashedPassword,
+            firstName,
+            lastName,
+        });
+
+        res.status(201).json({
+            message: "User registered successfully",
+            user: { username },
+        });
+    } catch (error) {
+        res.status(500).json({ message: "Error registering user", error });
+    }
+};
+
+export const loginUser = async (req: Request, res: Response) => {
+    const { username, password } = req.body;
+
+    try {
+        // Busca al usuario
+        const user = await User.findOne({ where: { username } });
+        if (!user) {
+            return res.status(404).json({ message: "User not found" });
+        }
+
+        // Verifica la contraseña
+        const validPassword = await bcrypt.compare(password, user.password);
+        if (!validPassword) {
+            return res.status(401).json({ message: "Invalid credentials" });
+        }
+
+        // Genera el token
+        const token = jwt.sign(
+            { id: user.id, username: user.username },
+            process.env.JWT_SECRET as string,
+            { expiresIn: "1h" }
+        );
+
+        res.status(200).json({ token });
+    } catch (error) {
+        res.status(500).json({ message: "Error logging in", error });
     }
 };

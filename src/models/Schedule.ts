@@ -1,5 +1,5 @@
 import { Model, DataTypes } from "sequelize";
-import sequelize from "../database/db";
+import sequelize from "../config/database";
 import ScheduleType from "./ScheduleType";
 
 class Schedule extends Model {

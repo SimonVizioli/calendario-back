@@ -31,10 +31,14 @@ calendario-back
 │   │   └── UserScheduleRoutes.ts
 │   ├── middlewares                # Contains middleware functions
 │   │   └── loggerMiddleware.ts
-│   ├── database                   # Contains database configuration and initialization
-│   │   └── db.ts
-│   └── types                      # Contains TypeScript types and interfaces
-│       └── index.ts
+│   ├── config                     # Contains database configuration and initialization
+│   │   └── database.ts
+│   ├── types                      # Contains TypeScript types and interfaces
+│   │    └── index.ts
+│   └── utils                      # Contains utility functions
+│        ├── scripts
+│        │    └── generateSecret.js
+│        └── const.ts              # Contains
 ├── docker                         # Contains Docker configuration files
 │   ├── docker-compose.yml
 │   └── Dockerfile

@@ -1,5 +1,5 @@
 import { Model, DataTypes } from "sequelize";
-import sequelize from "../database/db";
+import sequelize from "../config/database";
 import Event from "./Event";
 import Schedule from "./Schedule";
 import User from "./User";
