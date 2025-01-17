@@ -1,4 +1,4 @@
-import EventSchedule from "./EventSchedule";
+import EventSchedule from "./Auditory";
 import Schedule from "./Schedule";
 import UserSchedule from "./UserSchedule";
 

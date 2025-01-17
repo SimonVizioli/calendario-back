@@ -7,174 +7,6 @@
 	},
 	"item": [
 		{
-			"name": "Event",
-			"item": [
-				{
-					"name": "getEventById",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "http://localhost:{{Port}}/api/events/:id",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "{{Port}}",
-							"path": [
-								"api",
-								"events",
-								":id"
-							],
-							"variable": [
-								{
-									"key": "id",
-									"value": "7fa34f77-1a67-456c-8d9e-b8c6b8e7e123"
-								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "getAllEvents",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "http://localhost:{{Port}}/api/events/",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "{{Port}}",
-							"path": [
-								"api",
-								"events",
-								""
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "createEvent",
-					"request": {
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n    \"id\": \"9fa76a44-1a67-456c-9d9e-c9c7b8f99f66\",\n    \"name\": \"AI Conference\",\n    \"code\": \"AI2024\",\n    \"description\": \"Conference about artificial intelligence advancements\"\n}\n",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "http://localhost:{{Port}}/api/events/",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "{{Port}}",
-							"path": [
-								"api",
-								"events",
-								""
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "updateEvent",
-					"request": {
-						"method": "PUT",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n    \"id\": \"7fa34f77-1a67-456c-8d9e-b8c6b8e7e123\",\n    \"name\": \"Tech Conference Updated\",\n    \"code\": \"TECH2024UPD\",\n    \"description\": \"Annual technology conference updated\"\n}\n",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "http://localhost:{{Port}}/api/events/:id",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "{{Port}}",
-							"path": [
-								"api",
-								"events",
-								":id"
-							],
-							"variable": [
-								{
-									"key": "id",
-									"value": "7fa34f77-1a67-456c-8d9e-b8c6b8e7e123"
-								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "deleteEvent",
-					"request": {
-						"method": "DELETE",
-						"header": [],
-						"url": {
-							"raw": "http://localhost:{{Port}}/api/events/:id",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "{{Port}}",
-							"path": [
-								"api",
-								"events",
-								":id"
-							],
-							"variable": [
-								{
-									"key": "id",
-									"value": "8cb56a33-8c76-4b89-a347-d9a6b6c8f901"
-								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "countEvents",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "http://localhost:{{Port}}/api/events/count",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "{{Port}}",
-							"path": [
-								"api",
-								"events",
-								"count"
-							]
-						}
-					},
-					"response": []
-				}
-			],
-			"description": "**Descripción:**  \nLa entidad `Event` representa un evento registrado en el sistema, como conferencias, capacitaciones o actividades específicas.\n\n**Campos principales:**\n\n- `id`: Identificador único del evento (UUID).\n    \n- `name`: Nombre del evento.\n    \n- `code`: Código único del evento.\n    \n- `description`: Descripción del evento."
-		},
-		{
 			"name": "Schedule",
 			"item": [
 				{
@@ -207,6 +39,16 @@
 				{
 					"name": "getAllSchedules",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImQwZGVhMjhlLWZhZjItNDQ1My04N2RjLWE4MzNhMWI1ZDQ4ZiIsInVzZXJuYW1lIjoianVhbnBlcmV6IiwiaWF0IjoxNzM3MDM0ODE1LCJleHAiOjE3MzcwMzg0MTV9.rSfSkV4ThQXzk-Sf1HnxrQCV4mYiTDOYX_5HxZCOY2c",
+									"type": "string"
+								}
+							]
+						},
 						"method": "GET",
 						"header": [],
 						"url": {
@@ -348,6 +190,16 @@
 				{
 					"name": "getUsersById",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjNjNTM4YmI5LWEwMTktNGQ4Yi1hMTRkLTBlMTIzYTlhYzJiMyIsInVzZXJuYW1lIjoianVhbnBlcmV6IiwiaWF0IjoxNzM2MjAzMDIwLCJleHAiOjE3MzYyMDY2MjB9.YbFGlgU6SEp0mrI7cFXgkPb-BdVrQFOPf7-gRVr-z8o",
+									"type": "string"
+								}
+							]
+						},
 						"method": "GET",
 						"header": [],
 						"url": {
@@ -375,6 +227,16 @@
 				{
 					"name": "getAllUsers",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImU1NzA4MjI5LTU3MjUtNDE2OC1iZDc2LWU1OGJiNWJlMDc1ZSIsInVzZXJuYW1lIjoianVhbnBlcmV6IiwiaWF0IjoxNzM2NTIwMzQwLCJleHAiOjE3MzY1MjM5NDB9.jD_GeTcW-cQEtBarLkk7TIdDlnJu8kOSJY_q90hB368",
+									"type": "string"
+								}
+							]
+						},
 						"method": "GET",
 						"header": [],
 						"url": {
@@ -418,6 +280,66 @@
 								"api",
 								"users",
 								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "registerUser",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \n    \"firstName\": \"Juan\",\n    \"lastName\":\"Perez\",\n    \"username\": \"juanperez\",\n    \"password\":\"12345\"\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:{{Port}}/api/users/register",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "{{Port}}",
+							"path": [
+								"api",
+								"users",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "loginUser",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"username\": \"juanperez\",\n    \"password\":\"12345\"\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:{{Port}}/api/users/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "{{Port}}",
+							"path": [
+								"api",
+								"users",
+								"login"
 							]
 						}
 					},
@@ -479,7 +401,7 @@
 							"variable": [
 								{
 									"key": "id",
-									"value": "3d9ff6bd-984c-4989-b924-d91ea57a979b"
+									"value": "7687d7a5-986d-475d-9d75-fb4c1b66f685"
 								}
 							]
 						}
@@ -679,15 +601,25 @@
 			"description": "**Descripción:**  \nLa entidad `ScheduleType` define los tipos de programación disponibles, como reuniones, talleres o entrenamientos. Se utiliza para categorizar los schedules.\n\n**Campos principales:**\n\n- `id`: Identificador único del tipo de schedule (UUID).\n    \n- `name`: Nombre del tipo (por ejemplo, \"Meeting\", \"Workshop\").\n    \n- `code`: Código único para identificar el tipo.\n    \n- `description`: Descripción opcional del tipo."
 		},
 		{
-			"name": "EventSchedule",
+			"name": "Auditory",
 			"item": [
 				{
-					"name": "getEventScheduleById",
+					"name": "getAuditoryById",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjE3YTdjY2I0LWZmZjUtNDMyMi1iZmJhLWM5MmFjNzU4MjA4YyIsInVzZXJuYW1lIjoianVhbnBlcmV6IiwiaWF0IjoxNzM3MDMzMzY2LCJleHAiOjE3MzcwMzY5NjZ9.yDUAPYuBHcX-d4vLmAHYjtwYvAJpneTXRxT3qsea_iM",
+									"type": "string"
+								}
+							]
+						},
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:{{Port}}/api/event-schedules/:id",
+							"raw": "http://localhost:{{Port}}/api/auditory/:id",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -695,7 +627,7 @@
 							"port": "{{Port}}",
 							"path": [
 								"api",
-								"event-schedules",
+								"auditory",
 								":id"
 							],
 							"variable": [
@@ -709,12 +641,22 @@
 					"response": []
 				},
 				{
-					"name": "getAllEventSchedules",
+					"name": "getAllAuditories",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjE3YTdjY2I0LWZmZjUtNDMyMi1iZmJhLWM5MmFjNzU4MjA4YyIsInVzZXJuYW1lIjoianVhbnBlcmV6IiwiaWF0IjoxNzM3MDMzMzY2LCJleHAiOjE3MzcwMzY5NjZ9.yDUAPYuBHcX-d4vLmAHYjtwYvAJpneTXRxT3qsea_iM",
+									"type": "string"
+								}
+							]
+						},
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:{{Port}}/api/event-schedules/",
+							"raw": "http://localhost:{{Port}}/api/auditory/",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -722,7 +664,7 @@
 							"port": "{{Port}}",
 							"path": [
 								"api",
-								"event-schedules",
+								"auditory",
 								""
 							]
 						}
@@ -730,13 +672,23 @@
 					"response": []
 				},
 				{
-					"name": "createEventSchedule",
+					"name": "createAuditory",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImQwZGVhMjhlLWZhZjItNDQ1My04N2RjLWE4MzNhMWI1ZDQ4ZiIsInVzZXJuYW1lIjoianVhbnBlcmV6IiwiaWF0IjoxNzM3MDM0ODE1LCJleHAiOjE3MzcwMzg0MTV9.rSfSkV4ThQXzk-Sf1HnxrQCV4mYiTDOYX_5HxZCOY2c",
+									"type": "string"
+								}
+							]
+						},
 						"method": "POST",
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "  {\n        \"schedule_id\": \"cc31f8e4-2e8c-4b9b-b146-a10b6b7d88b1\",\n        \"event_id\": \"7fa34f77-1a67-456c-8d9e-b8c6b8e7e123\",\n        \"user_id\": \"5ee55e55-4b9c-4b9c-b846-f30b6b7e88e2\"\n    }",
+							"raw": "  {\n        \"action\": \"Created schedule\",\n        \"user_id\": \"5ee55e55-4b9c-4b9c-b846-f30b6b7e88e2\",\n        \"scheduleData\": \"ae38f8c4-1e8f-4b9c-b846-f30b6b8d99f3\"\n    }",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -744,7 +696,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:{{Port}}/api/event-schedules/",
+							"raw": "http://localhost:{{Port}}/api/auditory/",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -752,7 +704,7 @@
 							"port": "{{Port}}",
 							"path": [
 								"api",
-								"event-schedules",
+								"auditory",
 								""
 							]
 						}
@@ -760,13 +712,23 @@
 					"response": []
 				},
 				{
-					"name": "updateEventSchedule",
+					"name": "updateAuditory",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImQwZGVhMjhlLWZhZjItNDQ1My04N2RjLWE4MzNhMWI1ZDQ4ZiIsInVzZXJuYW1lIjoianVhbnBlcmV6IiwiaWF0IjoxNzM3MDM0ODE1LCJleHAiOjE3MzcwMzg0MTV9.rSfSkV4ThQXzk-Sf1HnxrQCV4mYiTDOYX_5HxZCOY2c",
+									"type": "string"
+								}
+							]
+						},
 						"method": "PUT",
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "  {\n         \"id\": \"4f1e3f4a-c458-4482-bf7e-932ee7d7b216\",\n        \"schedule_id\": \"cc31f8e4-2e8c-4b9b-b146-a10b6b7d88b1\",\n        \"event_id\": \"7fa34f77-1a67-456c-8d9e-b8c6b8e7e123\",\n        \"user_id\": \"3cc31f8e-2e8c-4b9b-b146-a10b6b7d88b1\"\n    }\n",
+							"raw": "{\n    \"id\": \"2b6cb8c8-e6eb-4f3a-ba1d-9acf4f808e7a\",\n    \"action\": \"Created schedule\",\n    \"user_id\": \"5ee55e55-4b9c-4b9c-b846-f30b6b7e88e2\",\n    \"scheduleData\": \"Actualizado\",\n    \"updatedAt\": \"2025-01-16T14:19:58.745Z\",\n    \"createdAt\": \"2025-01-16T14:19:58.745Z\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -774,7 +736,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:{{Port}}/api/event-schedules/:id",
+							"raw": "http://localhost:{{Port}}/api/auditory/:id",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -782,13 +744,13 @@
 							"port": "{{Port}}",
 							"path": [
 								"api",
-								"event-schedules",
+								"auditory",
 								":id"
 							],
 							"variable": [
 								{
 									"key": "id",
-									"value": "4f1e3f4a-c458-4482-bf7e-932ee7d7b216"
+									"value": "2b6cb8c8-e6eb-4f3a-ba1d-9acf4f808e7a"
 								}
 							]
 						}
@@ -796,12 +758,22 @@
 					"response": []
 				},
 				{
-					"name": "deleteEventSchedule",
+					"name": "deleteAuditory",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImQwZGVhMjhlLWZhZjItNDQ1My04N2RjLWE4MzNhMWI1ZDQ4ZiIsInVzZXJuYW1lIjoianVhbnBlcmV6IiwiaWF0IjoxNzM3MDM0ODE1LCJleHAiOjE3MzcwMzg0MTV9.rSfSkV4ThQXzk-Sf1HnxrQCV4mYiTDOYX_5HxZCOY2c",
+									"type": "string"
+								}
+							]
+						},
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:{{Port}}/api/event-schedules/:id",
+							"raw": "http://localhost:{{Port}}/api/auditory/:id",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -809,13 +781,13 @@
 							"port": "{{Port}}",
 							"path": [
 								"api",
-								"event-schedules",
+								"auditory",
 								":id"
 							],
 							"variable": [
 								{
 									"key": "id",
-									"value": "4f1e3f4a-c458-4482-bf7e-932ee7d7b216"
+									"value": "2b6cb8c8-e6eb-4f3a-ba1d-9acf4f808e7a"
 								}
 							]
 						}
@@ -823,12 +795,22 @@
 					"response": []
 				},
 				{
-					"name": "countEventSchedules",
+					"name": "countAuditory",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImQwZGVhMjhlLWZhZjItNDQ1My04N2RjLWE4MzNhMWI1ZDQ4ZiIsInVzZXJuYW1lIjoianVhbnBlcmV6IiwiaWF0IjoxNzM3MDM0ODE1LCJleHAiOjE3MzcwMzg0MTV9.rSfSkV4ThQXzk-Sf1HnxrQCV4mYiTDOYX_5HxZCOY2c",
+									"type": "string"
+								}
+							]
+						},
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:{{Port}}/api/event-schedules/",
+							"raw": "http://localhost:{{Port}}/api/auditory/",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -836,7 +818,7 @@
 							"port": "{{Port}}",
 							"path": [
 								"api",
-								"event-schedules",
+								"auditory",
 								""
 							]
 						}
@@ -844,7 +826,7 @@
 					"response": []
 				}
 			],
-			"description": "**Descripción:**  \nLa entidad `EventSchedule` relaciona eventos con horarios específicos. Permite organizar un evento dentro de un schedule.\n\n**Campos principales:**\n\n- `id`: Identificador único de la relación (UUID).\n    \n- `event_id`: Identificador del evento asociado.\n    \n- `schedule_id`: Identificador del schedule asociado.\n    \n- `user_id`: Identificador del usuario que administra o participa en el evento."
+			"description": "**Descripción:**  \nLa entidad `Auditory` relaciona eventos con horarios específicos. Permite organizar un evento dentro de un schedule.\n\n**Campos principales:**\n\n- `id`: Identificador único de la relación (UUID).\n    \n- `event`: Evento ocurrido en un schedule.\n    \n- `schedule_id`: Identificador del schedule asociado.\n    \n- `user_id`: Identificador del usuario que administra o participa en el evento."
 		},
 		{
 			"name": "UserSchedule",

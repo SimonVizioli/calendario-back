@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
 import Schedule from "../models/Schedule";
-import EventSchedule from "../models/EventSchedule";
+import EventSchedule from "../models/Auditory";
 import UserSchedule from "../models/UserSchedule";
 import ScheduleType from "../models/ScheduleType";
 
@@ -92,10 +92,6 @@ export const deleteSchedule = async (req: Request, res: Response) => {
             return res.status(400).json({ message: "Schedule ID is required" });
         }
 
-        // Eliminar registros relacionados en EventSchedule
-        await EventSchedule.destroy({
-            where: { schedule_id: id },
-        });
         await UserSchedule.destroy({ where: { schedule_id: id } });
 
         const deleted = await Schedule.destroy({

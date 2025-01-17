@@ -1,7 +1,7 @@
 import { Request, Response } from "express";
 import User from "../models/User";
 import UserSchedule from "../models/UserSchedule";
-import EventSchedule from "../models/EventSchedule";
+import EventSchedule from "../models/Auditory";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 import dotenv from "dotenv";

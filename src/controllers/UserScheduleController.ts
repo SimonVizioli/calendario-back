@@ -1,5 +1,6 @@
 import { Request, Response } from "express";
 import UserSchedule from "../models/UserSchedule";
+import Auditory from "../models/Auditory";
 
 export const getUserScheduleById = async (req: Request, res: Response) => {
     try {
@@ -40,8 +41,16 @@ export const getAllUserSchedules = async (req: Request, res: Response) => {
 
 export const createUserSchedule = async (req: Request, res: Response) => {
     try {
-        const userSchedule = await UserSchedule.create(req.body);
-        res.status(201).json(userSchedule);
+        let { user_id } = req.body;
+
+        const newUserSchedule = await UserSchedule.create(req.body);
+
+        await Auditory.create({
+            action: "Created Schedule",
+            scheduleData: newUserSchedule.id,
+            user_id: user_id,
+        });
+        res.status(201).json(newUserSchedule);
     } catch (error) {
         res.status(500).json({ message: "Error creating userSchedule", error });
     }
@@ -50,6 +59,7 @@ export const createUserSchedule = async (req: Request, res: Response) => {
 export const updateUserSchedule = async (req: Request, res: Response) => {
     try {
         const { id } = req.params;
+        let { user_id } = req.body;
 
         // Validar entrada
         if (!id) {
@@ -64,6 +74,11 @@ export const updateUserSchedule = async (req: Request, res: Response) => {
         });
         if (updated) {
             const updatedUserSchedule = await UserSchedule.findByPk(id);
+            await Auditory.create({
+                action: "Updated Schedule",
+                scheduleData: id,
+                user_id: user_id,
+            });
             res.status(200).json(updatedUserSchedule);
         } else {
             res.status(404).json({ message: "UserSchedule not found" });
@@ -76,11 +91,26 @@ export const updateUserSchedule = async (req: Request, res: Response) => {
 export const deleteUserSchedule = async (req: Request, res: Response) => {
     try {
         const { id } = req.params;
+        let { user_id } = req.body;
 
         // Validar entrada
         if (!id) {
-            return res.status(400).json({ message: "Event ID is required" });
+            return res
+                .status(400)
+                .json({ message: "UserSchedule ID is required" });
         }
+
+        let userScheduleToDelete = await UserSchedule.findByPk(id);
+
+        if (!userScheduleToDelete) {
+            return res.status(404).json({ message: "UserSchedule not found" });
+        }
+
+        await Auditory.create({
+            action: "Updated Schedule",
+            scheduleData: JSON.stringify(userScheduleToDelete),
+            user_id: user_id,
+        });
 
         const deleted = await UserSchedule.destroy({
             where: { id },
